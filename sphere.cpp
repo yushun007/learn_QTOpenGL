@@ -1,14 +1,14 @@
 #include "sphere.h"
 
-Sphere::Sphere() :
-    _slice_num(2), _slice_vertices_num(4), _radius(1) {
+Sphere::Sphere(model_type type) :
+    _slice_num(2), _slice_vertices_num(4), _radius(1), BaseShape(type) {
     _triangle_num = 2 * _slice_vertices_num + (_slice_num - 2) * 2;
     _vertex_num = (_slice_num - 1) * _slice_vertices_num + 2;
     _vertex_coordinates = std::make_shared<VertexCoordinates>(_vertex_num);
     _indices = std::make_shared<TriangleIndices>(_triangle_num);
 }
-Sphere::Sphere(unsigned int slice_num, unsigned int slice_vertices_num, unsigned int radius) :
-    _slice_num(slice_num), _slice_vertices_num(slice_vertices_num), _radius(radius) {
+Sphere::Sphere(unsigned int slice_num, unsigned int slice_vertices_num, unsigned int radius,model_type type) :
+    _slice_num(slice_num), _slice_vertices_num(slice_vertices_num), _radius(radius), BaseShape(type) {
     std::cout << "init Sphere" << std::endl;
     _triangle_num = 2 * _slice_vertices_num + (_slice_num - 1) * _slice_vertices_num * 2;
     _vertex_num = (_slice_num - 1) * _slice_vertices_num + 2;

@@ -13,11 +13,6 @@ find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets OpenGLWidgets)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets OpenGLWidgets)
 
 
-message(${CMAKE_PREFIX_PATH})
-foreach(path ${CMAKE_MODULE_PATH})
-    message(${path})
-endforeach(path ${CMAKE_MODULE_PATH})
-
 find_package(Eigen3 REQUIRED)
 include_directories(${EIGEN3_INCLUDE_DIR})
 
@@ -39,7 +34,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         camera.h camera.cpp
         GLSL.qrc
         vertex.vert
-        fragment.frag
+            cube.frag
         cube.h cube.cpp
     )
 # Define target properties for Android with Qt 6 as:

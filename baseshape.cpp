@@ -1,9 +1,5 @@
 #include "baseshape.h"
 
-BaseShape::BaseShape()
-{
-
-}
 
 void BaseShape::init()
 {
@@ -25,4 +21,8 @@ unsigned int *BaseShape::indices()
 float *BaseShape::texture_coordinates()
 {
     return _texture_coordinates->data();
+}
+
+BaseShape::model_type BaseShape::get_type() const {
+    return _type;
 }

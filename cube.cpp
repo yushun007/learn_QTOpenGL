@@ -1,7 +1,7 @@
 #include "cube.h"
 #include <vector>
 
-Cube::Cube()
+Cube::Cube(model_type type): BaseShape(type)
 {
     _hight = 1;
     _width = 1;
@@ -10,7 +10,7 @@ Cube::Cube()
     _indices = std::make_shared<TriangleIndices>(12);
 }
 
-Cube::Cube(float length, float width, float hight):_length(length),_width(width),_hight(hight)
+Cube::Cube(float length, float width, float high,model_type type):_length(length),_width(width),_hight(high), BaseShape(type)
 {
     _vertex_coordinates = std::make_shared<VertexCoordinates>(8);
     _indices = std::make_shared<TriangleIndices>(12);

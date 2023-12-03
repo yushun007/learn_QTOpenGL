@@ -8,8 +8,8 @@ class Cube : public BaseShape
 {
     Q_OBJECT
 public:
-    Cube();
-    Cube(float length,float width,float hight);
+    Cube(model_type type);
+    Cube(float length,float width,float hight,model_type type);
 private:
     float _width;
     float _hight;

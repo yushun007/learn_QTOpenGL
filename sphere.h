@@ -7,8 +7,8 @@
 class Sphere : public BaseShape
 {
 public:
-    Sphere();
-    Sphere(unsigned int slice_num,unsigned int slice_vertices_num,unsigned int raduis);
+    Sphere(model_type type);
+    Sphere(unsigned int slice_num,unsigned int slice_vertices_num,unsigned int raduis,model_type type);
     ~Sphere();
     unsigned int vertices_length() const override;
     unsigned int indices_length() const override;

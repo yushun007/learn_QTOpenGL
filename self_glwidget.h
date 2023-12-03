@@ -15,10 +15,11 @@ public:
     self_glWidget(QWidget* parent);
     ~self_glWidget();
     void set_vertices();
-    template<typename T>
-    void set_uniform(const char* name,T value);
+    void set_uniform(const char* name,Mat4f value,unsigned int program_id);
+    void set_uniform(const char* name,Vec4f value,unsigned int program_id);
     void rend();
-    void add_model(BaseShape* shape);
+    void add_model(BaseShape* shape,const QString & vertex_shader,const QString& fragment_shader,Vec3f m_vec = Vec3f::Zero(),Vec4f color=Vec4f::Random().array().abs());
+    QOpenGLShaderProgram* set_shader(const QString& vertex_shader,const QString& fragment_shader);
     // QWidget interface
 protected:
     void keyPressEvent(QKeyEvent *event) override;
@@ -32,10 +33,11 @@ protected:
 private:
     Camera _camera;
     std::vector<BaseShape*> _models;
-    unsigned int _program_id;
+    std::vector<Vec3f> _m_vec;
+    std::vector<Vec4f> _color_vec;
+    std::vector<QOpenGLShaderProgram*> _program_ids;
     std::vector<unsigned int> _vaos;
     std::vector<unsigned int*> _vbos;
-    QOpenGLShaderProgram _shader_program;
 };
 
 #endif // SELF_GLWIDGET_H
